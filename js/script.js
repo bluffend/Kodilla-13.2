@@ -11,16 +11,11 @@ var x = document.querySelectorAll(".container a[href]");
 
     var showModal = function (event) {
         event.preventDefault();
-
-        // Musiałem wstawić trzy osobne linie żeby usunąć modale bo przy 
-        // poniższej komendzie pojawia się błąd:
-        // M276 script.js:17 Uncaught TypeError: Cannot read property 'remove' of undefined at HTMLAnchorElement.showModal
-        //document.querySelectorAll('.modal').classList.remove('show');
-
-        document.querySelector('#modal-one').classList.remove('show');
-        document.querySelector('#modal-two').classList.remove('show');
-        document.querySelector('#modal-three').classList.remove('show');
-
+        var modals = document.querySelectorAll('.modal');
+        for (i=0; i < modals.length; i++ ) {
+            modals[i].classList.remove('show');
+        }
+        
         var hrefValue = this.getAttribute('href');
         document.querySelector("#modal-overlay").classList.add("show");
         document.querySelector(hrefValue).classList.add('show');
